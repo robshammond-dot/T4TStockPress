@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sharing Your Trip Photos - Thompsons For Travel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root{
+    --navy:#0A52A0;
+    --navy-deep:#073963;
+    --cyan:#00AEEF;
+    --cyan-soft:#E4F6FE;
+    --ink:#1B2430;
+    --slate:#5B6B7C;
+    --slate-bg:#E9EDF1;
+    --paper:#FFFFFF;
+    --green:#17794A;
+    --red:#A9291F;
+    --amber:#B5720A;
+    --green-bg:#EAF6EF;
+    --red-bg:#FBEBEA;
+    --amber-bg:#FCF3E3;
+    --border:#DCE3EA;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--slate-bg);
+    color:var(--ink);
+    font-family:'Open Sans', 'Segoe UI', sans-serif;
+    font-size:14px;
+    line-height:1.6;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px 60px;}
+
+  header.hero{
+    background:linear-gradient(135deg, var(--cyan-soft) 0%, #F3F9FD 60%, #FFFFFF 100%);
+    border-bottom:3px solid var(--cyan);
+    padding:28px 20px 24px;
+  }
+  .hero-inner{max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;}
+  .logo{display:flex;flex-direction:column;line-height:1;}
+  .logo .t4t{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--navy-deep);letter-spacing:.2px;}
+  .logo .ft{font-family:'Space Mono',monospace;font-weight:700;font-size:10px;letter-spacing:2px;color:var(--cyan);margin-top:3px;text-transform:uppercase;}
+  .eyebrow{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1.5px;font-size:10.5px;color:var(--slate);margin-bottom:6px;}
+  h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:27px;color:var(--navy-deep);margin:0 0 6px;}
+  .hero-desc{color:var(--slate);max-width:520px;font-size:13.5px;}
+  .print-btn{
+    position:fixed;top:18px;right:18px;z-index:50;
+    background:var(--paper);border:1px solid var(--border);color:var(--navy);
+    font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;
+    padding:9px 16px;border-radius:999px;cursor:pointer;box-shadow:0 2px 6px rgba(10,82,160,.15);
+  }
+  .print-btn:hover{background:var(--cyan-soft);}
+
+  nav.toc{
+    max-width:1000px;margin:22px auto 0;padding:0 20px;
+    display:flex;flex-wrap:wrap;gap:8px;
+  }
+  nav.toc a{
+    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.5px;text-transform:uppercase;
+    background:var(--paper);border:1px solid var(--border);color:var(--navy);
+    padding:7px 13px;border-radius:999px;text-decoration:none;
+  }
+  nav.toc a:hover{background:var(--cyan-soft);border-color:var(--cyan);}
+  nav.toc a.part{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+  .intro-card{
+    background:var(--paper);border:1px solid var(--border);border-radius:12px;
+    box-shadow:0 1px 2px rgba(10,20,40,.05), 0 6px 18px rgba(10,20,40,.05);
+    padding:20px 24px;margin-top:22px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .intro-card .ic{font-size:26px;line-height:1;}
+  .intro-card p{margin:0 0 8px;color:var(--ink);}
+  .intro-card strong{color:var(--navy-deep);}
+  .btn{
+    display:inline-block;margin-top:6px;background:var(--navy);color:#fff;text-decoration:none;
+    font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;
+    padding:9px 16px;border-radius:999px;
+  }
+  .btn:hover{background:var(--navy-deep);}
+
+  .legend{
+    background:var(--paper);border:1px solid var(--border);border-radius:12px;
+    box-shadow:0 1px 2px rgba(10,20,40,.05), 0 6px 18px rgba(10,20,40,.05);
+    padding:20px 24px;margin-top:16px;
+  }
+  .legend h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;color:var(--navy-deep);margin:0 0 4px;}
+  .legend .sub{color:var(--slate);font-size:12.5px;margin-bottom:14px;}
+  .legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+  .legend-item{display:flex;gap:10px;align-items:flex-start;background:var(--slate-bg);border-radius:6px;padding:10px 12px;}
+  .dot{width:13px;height:13px;border-radius:50%;flex:0 0 13px;margin-top:2px;}
+  .dot-green{background:var(--green);}
+  .dot-amber{background:var(--amber);}
+  .dot-red{background:var(--red);}
+  .dot-blue{background:var(--navy);}
+  .legend-item b{display:block;font-size:12.5px;color:var(--ink);}
+  .legend-item span{font-size:12px;color:var(--slate);overflow-wrap:anywhere;}
+  .legend-item > div{min-width:0;}
+
+  .part-title{
+    margin:36px 0 14px;display:flex;align-items:center;gap:12px;scroll-margin-top:20px;
+    break-after:avoid;page-break-after:avoid;
+  }
+  .part-title .num{
+    width:30px;height:30px;border-radius:6px;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;flex:0 0 30px;
+  }
+  .part-title h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:19px;color:var(--navy-deep);margin:0;}
+  .part-title .tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--slate);}
+  .part-intro{color:var(--slate);margin:-6px 0 14px 42px;font-size:13px;}
+
+  section.card{
+    background:var(--paper);border:1px solid var(--border);border-radius:12px;
+    box-shadow:0 1px 2px rgba(10,20,40,.05), 0 6px 18px rgba(10,20,40,.05);
+    padding:22px 24px;margin-bottom:16px;scroll-margin-top:20px;
+  }
+  .card-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+  .badge{
+    width:28px;height:28px;border-radius:6px;background:var(--cyan-soft);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;flex:0 0 28px;
+  }
+  .card h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:16.5px;color:var(--navy-deep);margin:0;}
+  .card h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--navy);margin:16px 0 4px;}
+  .card p{margin:8px 0;}
+  .card ul{margin:8px 0;padding-left:20px;}
+  .card li{margin-bottom:5px;}
+  .status-line{
+    display:flex;align-items:center;gap:8px;font-size:13px;background:var(--slate-bg);
+    border-radius:6px;padding:8px 12px;margin:10px 0;
+  }
+  .status-line .dot{margin-top:0;}
+
+  .callout{
+    border-radius:12px;padding:14px 18px;margin:14px 0;display:flex;gap:12px;align-items:flex-start;font-size:13px;
+  }
+  .callout .ic{font-size:17px;line-height:1.3;}
+  .callout-amber{background:var(--amber-bg);border:1px solid #EAD3A5;color:#6B4B0A;}
+  .callout-blue{background:var(--cyan-soft);border:1px solid #B7E4F7;color:var(--navy-deep);}
+  .callout strong{display:block;margin-bottom:2px;}
+
+  .step-list{counter-reset:step;list-style:none;padding:0;margin:10px 0;}
+  .step-list > li{
+    counter-increment:step;position:relative;padding-left:34px;margin-bottom:10px;
+  }
+  .step-list > li::before{
+    content:counter(step);position:absolute;left:0;top:0;
+    width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;
+    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sub-block{background:var(--slate-bg);border-radius:6px;padding:10px 14px;margin:8px 0;}
+  .sub-block p{margin:4px 0;}
+
+  .ui{font-family:'Space Mono',monospace;font-size:12px;background:var(--cyan-soft);color:var(--navy-deep);padding:1px 6px;border-radius:4px;white-space:nowrap;}
+  .name{font-family:'Space Mono',monospace;font-size:12px;color:var(--navy-deep);}
+
+  .tree{
+    font-family:'Space Mono',monospace;font-size:12px;line-height:1.75;background:var(--slate-bg);
+    border-radius:6px;padding:12px 16px;margin:10px 0;color:var(--ink);overflow-x:auto;
+  }
+  .tree .l1{padding-left:18px;}
+  .tree .l2{padding-left:36px;}
+  .tree .l3{padding-left:54px;color:var(--slate);}
+  .tree b{color:var(--navy-deep);}
+
+  .tbl-wrap{overflow-x:auto;margin:10px 0;border-radius:8px;border:1px solid var(--border);}
+  table.spec{width:100%;border-collapse:collapse;font-size:13px;min-width:460px;}
+  table.spec th{
+    background:var(--navy);color:#fff;text-align:left;font-family:'Space Mono',monospace;
+    font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;padding:9px 12px;font-weight:700;
+  }
+  table.spec td{padding:9px 12px;border-top:1px solid var(--border);vertical-align:top;}
+  table.spec tr:nth-child(even) td{background:#F7FAFC;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}
+  .mini{background:var(--slate-bg);border-radius:8px;padding:12px 14px;}
+  .mini b{display:block;color:var(--navy-deep);font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;margin-bottom:2px;}
+  .mini span{font-size:12.5px;color:var(--slate);}
+
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+  .chip{font-family:'Space Mono',monospace;font-size:11px;background:var(--cyan-soft);color:var(--navy-deep);border:1px solid #B7E4F7;padding:3px 10px;border-radius:999px;}
+
+  .more-help{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);}
+  .more-help span{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--slate);margin-right:2px;}
+  .more-help a{font-size:12px;color:var(--navy);text-decoration:none;background:var(--cyan-soft);border:1px solid #B7E4F7;padding:4px 11px;border-radius:999px;}
+  .more-help a:hover{background:#fff;}
+  .more-help a::after{content:" \2197";font-size:11px;}
+  .vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0;}
+  .vid{display:block;background:var(--slate-bg);border-radius:8px;padding:12px 14px;text-decoration:none;color:var(--ink);border:1px solid transparent;}
+  .vid:hover{border-color:var(--cyan);background:var(--cyan-soft);}
+  .vid b{display:block;color:var(--navy-deep);font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;}
+  .vid span{font-size:12.5px;color:var(--slate);}
+  a.inl{color:var(--navy);font-weight:600;}
+
+  footer{
+    max-width:1000px;margin:30px auto 0;padding:16px 20px;color:var(--slate);
+    font-size:11.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;
+    border-top:1px solid var(--border);
+  }
+
+  @media print{
+    .print-btn, nav.toc{display:none;}
+    body{background:#fff;}
+    section.card, .legend, .intro-card, .callout, .tree, .tbl-wrap{box-shadow:none;break-inside:avoid;page-break-inside:avoid;}
+    .part-title{break-after:avoid;page-break-after:avoid;}
+    .btn{background:none;color:var(--navy);border:1px solid var(--navy);}
+  }
+  @media (max-width:640px){
+    h1{font-size:22px;}
+    .hero-inner{align-items:flex-start;}
+    .print-btn{position:static;display:block;margin:12px 16px 0 auto;}
+    .wrap{padding:0 16px 48px;}
+    nav.toc{padding:0 16px;}
+    section.card,.legend,.intro-card{padding:18px 16px;}
+    .intro-card{flex-direction:column;gap:8px;}
+    .two-col{grid-template-columns:1fr;}
+    .part-intro{margin-left:0;}
+  }
+  .status-line span{display:block;}
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="logo"><span class="t4t">Thompsons</span><span class="ft">For Travel</span></div>
+    </div>
+    <div style="text-align:left;">
+      <div class="eyebrow">Educationals · Quick Tips</div>
+      <h1>Sharing Your Trip Photos</h1>
+      <div class="hero-desc">Simple tips for getting your best photos from an educational or site inspection into our photo library, using the links you are sent.</div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#t1">Your links</a>
+  <a href="#t2">Which link to use</a>
+  <a href="#t3">Pick your top pics</a>
+  <a href="#t4">Uploading</a>
+  <a href="#t5">When to upload</a>
+  <a href="#t6">Checklist</a>
+</nav>
+
+<div class="wrap">
+
+  <div class="intro-card">
+    <div class="ic">📸</div>
+    <div>
+      <p><strong>Your photos are worth a lot after the trip.</strong> They end up in quotes, presentations and marketing, so a great shot of a room or a view can help sell that hotel for years.</p>
+      <p>You don't need a login or an app. Before the trip you'll get a few links. Open the right one, add your photos, and they land in the right place for everyone to use.</p>
+    </div>
+  </div>
+
+  <div class="part-title"><div class="num">1</div><div><div class="tag">Before you go</div><h2>Your Links</h2></div></div>
+
+  <section class="card" id="t1">
+    <div class="card-head"><div class="badge">1</div><h3>What You'll Receive</h3></div>
+    <p>How many links you get depends on the trip.</p>
+    <div class="two-col">
+      <div class="mini"><b>🧳 Educational with several stops</b><span>One <strong>General</strong> link, plus one link for each hotel or activity along the way.</span></div>
+      <div class="mini"><b>🏨 Single site inspection</b><span>Usually just one link for that property.</span></div>
+    </div>
+    <p>For a trip with several stops, it looks like this in the library:</p>
+    <div class="tree">
+      <b>Mauritius MegaFam Sep 2026</b>
+      <div class="l1">General</div>
+      <div class="l1">Ravenala Attitude</div>
+      <div class="l1">Constance Le Chaland</div>
+      <div class="l1">Zilwa Attitude</div>
+      <div class="l3">one folder for each stop</div>
+    </div>
+    <div class="callout callout-blue">
+      <div class="ic">📌</div>
+      <div><strong>Save your links somewhere easy to find on your phone.</strong> For example, pin the message they came in, or save them in your notes, so they are one tap away on the trip.</div>
+    </div>
+  </section>
+
+  <div class="part-title"><div class="num">2</div><div><div class="tag">On the trip</div><h2>Which Link to Use</h2></div></div>
+
+  <section class="card" id="t2">
+    <div class="card-head"><div class="badge">2</div><h3>Hotel Link or General Link?</h3></div>
+    <div class="status-line"><span class="dot dot-blue"></span><span><strong>Hotel link:</strong> anything at that hotel, such as rooms, the pool, the restaurant, the spa and the views from the property.</span></div>
+    <div class="status-line"><span class="dot dot-green"></span><span><strong>General link:</strong> everything else, such as scenery between stops, the group, flights and transfers, markets and local life.</span></div>
+    <div class="callout callout-blue">
+      <div class="ic">💡</div>
+      <div><strong>Not sure which one?</strong> If it was taken at a hotel, use that hotel's link. If not, use General.</div>
+    </div>
+  </section>
+
+  <section class="card" id="t3">
+    <div class="card-head"><div class="badge">3</div><h3>Pick Your Top Pics</h3></div>
+    <p>Fewer great photos are far more useful than hundreds of similar ones. Before you upload, take a minute to choose your best.</p>
+    <div class="two-col">
+      <div class="mini"><b>👍 Keep</b><span>Clear, bright and straight photos. A good mix for each hotel: rooms, outside of the property, pool and views, food, and activities.</span></div>
+      <div class="mini"><b>👎 Leave out</b><span>Blurry or dark shots, near-identical repeats, and photos where a room looks untidy.</span></div>
+    </div>
+    <ul>
+      <li><strong>Take a photo of each room type</strong> you see. A quick snap of the room name on the door or info card makes it easy to tell them apart later.</li>
+      <li><strong>Hold your phone sideways</strong> for rooms and views. These work best in presentations.</li>
+      <li><strong>Upload the original photos from your phone,</strong> not copies saved from WhatsApp, as those lose quality.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="t4">
+    <div class="card-head"><div class="badge">4</div><h3>Uploading</h3></div>
+    <ol class="step-list">
+      <li>Tap the link for the hotel, or the General link.</li>
+      <li>If it asks for your name, add it, so we know whose photos they are.</li>
+      <li>Choose your top pics and add them.</li>
+      <li>Wait until the upload has finished before you close the page.</li>
+    </ol>
+    <div class="callout callout-amber">
+      <div class="ic">🔗</div>
+      <div><strong>Link not opening, or upload not working?</strong> Let the person who sent you the links know. They can check it or send you a new one.</div>
+    </div>
+  </section>
+
+  <section class="card" id="t5">
+    <div class="card-head"><div class="badge">5</div><h3>When to Upload</h3></div>
+    <ul>
+      <li><strong>At the end of each day</strong> works best, while you still remember which photo was taken where.</li>
+      <li><strong>Use the hotel Wi-Fi</strong> where you can, rather than your mobile data.</li>
+      <li><strong>Don't wait until you're home.</strong> Photos from one hotel start to blur into the next very quickly.</li>
+    </ul>
+  </section>
+
+  <div class="part-title"><div class="num">3</div><div><div class="tag">Before you switch off</div><h2>Quick Checklist</h2></div></div>
+
+  <section class="card" id="t6">
+    <div class="card-head"><div class="badge">✓</div><h3>Every Evening on the Trip</h3></div>
+    <div class="status-line"><span class="dot dot-green"></span>I picked my top pics from today</div>
+    <div class="status-line"><span class="dot dot-green"></span>Hotel photos went in that hotel's link</div>
+    <div class="status-line"><span class="dot dot-green"></span>Everything else went in the General link</div>
+    <div class="status-line"><span class="dot dot-green"></span>Each upload finished before I closed the page</div>
+  </section>
+
+</div>
+
+<footer>
+  <span>Thompsons For Travel - Sharing Your Trip Photos - Quick Tips</span>
+  <span>Updated October 2026</span>
+</footer>
+
+</body>
+</html>
